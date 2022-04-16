@@ -9,7 +9,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="{{ asset('css/css@googlefonts.css') }}">
+    {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap"> --}}
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
@@ -18,20 +19,18 @@
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
+    
     <style>
         [x-cloak] {
             display: none !important;
         }
-
     </style>
 </head>
 
 <body class="font-sans antialiased">
     <x-jet-banner />
 
-    <div class="min-h-screen bg-white">
+    <div class="min-h-screen bg-gray-100">
         @livewire('navigation-menu')
 
         <!-- Page Heading -->
@@ -58,6 +57,9 @@
     @stack('modals')
 
     @livewireScripts
+    <script src="{{ asset('js/sweetalert2@11.js') }}"></script>
+    <x-livewire-alert::scripts />
+    @stack('scripts')
 </body>
 
 </html>

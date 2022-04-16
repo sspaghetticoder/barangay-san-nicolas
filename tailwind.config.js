@@ -12,7 +12,10 @@ module.exports = {
     safelist: [
         '!bg-red-100',
         '!border-b',
-        '!border-red-300'
+        '!border-red-300',
+        'line-through',
+        'bg-green-500', 
+        'hover:bg-green-700'
     ],
 
     theme: {

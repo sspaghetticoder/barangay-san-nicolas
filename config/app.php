@@ -71,6 +71,8 @@ return [
 
     'timezone' => 'UTC',
 
+    'local-timezone' => 'Asia/Manila',
+
     /*
     |--------------------------------------------------------------------------
     | Application Locale Configuration

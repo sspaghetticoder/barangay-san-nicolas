@@ -17,17 +17,17 @@
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-jet-nav-link href="{{ route('residents.index') }}" :active="request()->is('residents/*') || request()->routeIs('residents.index')">
                         {{ __('Residents') }}
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-jet-nav-link href="{{ route('activity-logs') }}" :active="request()->routeIs('activity-logs')">
                         {{ __('Activity Logs') }}
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('users') }}" :active="request()->routeIs('users')">
+                    <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->is('users/*') || request()->routeIs('users.index')">
                         {{ __('Users') }}
                     </x-jet-nav-link>
                 </div>

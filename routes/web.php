@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ResidentController;
+use App\Http\Controllers\UserController;
+use App\Http\Livewire\Dashboard;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,13 +17,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    // Route::get('/dashboard', function () {
+    //     return view('dashboard');
+    // })->name('dashboard');
+    Route::get('/dashboard', Dashboard::class)->name('dashboard');
 
-    Route::get('/users', fn() => view('tables.user'))->name('users');
+    Route::put('/users/{id}/undo', [UserController::class, 'undo'])->name('users.undo');
+    Route::resource('users', UserController::class);
+
+    Route::put('/residents/{id}/undo', [ResidentController::class, 'undo'])->name('residents.undo');
+    Route::resource('residents', ResidentController::class);
+
+    Route::get('/activity-logs', fn() => view('tables.activity-log'))->name('activity-logs');
 });
