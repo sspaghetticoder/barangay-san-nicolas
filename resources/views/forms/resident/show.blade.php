@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <x-form::container>
+    <x-form::container target="_blank" :action="route('pdf.print')">
         <x-slot:content>
             <x-form::divider>
                 <x-slot:title>Personal Information</x-slot:title>
@@ -138,16 +138,30 @@
                 <x-jet-input-error for="specified" />
             </x-form::field>
 
+            <x-jet-input id="route" name="route" type="hidden" value="test"/>
+            <x-jet-input id="full_id" name="full_id" type="hidden" value="{{ $resident->full_id }}"/>
+
             <x-form::footer>
                 <x-form::button title="Go back" type="secondary" :link="route('residents.index')" />
-                <x-form::button title="Indigency" type="primary" link="#" />
-                <x-form::button title="Residency" type="info" link="#" />
-                <x-form::button title="Clearance" type="success" link="#" />
+                <x-form::button id="Indigency" title="Indigency" type="primary" class="print-btn ml-1 px-4 py-2 rounded-md" />
+                <x-form::button id="Residency" title="Residency" type="info" class="print-btn ml-1 px-4 py-2 rounded-md" />
+                <x-form::button id="Clearance" title="Clearance" type="success" class="print-btn ml-1 px-4 py-2 rounded-md" />
             </x-form::footer>
-            </x-slot>
+        </x-slot>
     </x-form::container>
 
     @push('scripts')
         <script src="{{ asset('js/dropdown.js') }}"></script>
+
+        <script>
+            var print_btns = document.querySelectorAll(".print-btn")
+            var routeInput = document.querySelector("#route")
+
+            print_btns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    routeInput.value = this.id
+                })
+            })
+        </script>
     @endpush
 </x-app-layout>

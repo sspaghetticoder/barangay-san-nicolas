@@ -24,6 +24,10 @@ trait ResidentTableColumns
                 ->secondaryHeader(function () {
                     return view('tables.cells.input-search', ['field' => 'full_id', 'columnSearch' => $this->columnSearch]);
                 }),
+            Column::make('Full Name', 'name')
+                ->searchable()
+                ->excludeFromColumnSelect()
+                ->hideIf(true),
             Column::make("Last name", "last_name")
                 ->sortable()
                 ->searchable()

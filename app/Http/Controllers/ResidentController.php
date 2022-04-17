@@ -74,8 +74,10 @@ class ResidentController extends Controller
      */
     public function show($id)
     {
+        $resident = Resident::findOrFail($id);
+
         return view('forms.resident.show', [
-            'resident' => Resident::findOrFail($id),
+            'resident' => $resident,
             'purposes' => config('setting.purposes'),
             'houseNumberAlias' => $this->houseNumberAlias,
             'areaAlias' => $this->areaAlias,

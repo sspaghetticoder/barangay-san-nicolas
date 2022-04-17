@@ -59,8 +59,80 @@ class Resident extends Model
         });
     }
 
+    public function setLastNameAttribute($value)
+    {
+        $this->attributes['last_name'] = trim($value);
+    }
+
+    public function setFirstNameAttribute($value)
+    {
+        $this->attributes['first_name'] = trim($value);
+    }
+
+    public function setMiddleNameAttribute($value)
+    {
+        $this->attributes['middle_name'] = trim($value);
+    }
+
+    public function setSuffixAttribute($value)
+    {
+        $this->attributes['suffix'] = trim($value);
+    }
+
+    public function setEmailAttribute($value)
+    {
+        $this->attributes['email'] = trim($value);
+    }
+
+    public function setContactNumberAttribute($value)
+    {
+        $this->attributes['contact_number'] = trim($value);
+    }
+
+    public function setHouseNumberAttribute($value)
+    {
+        $this->attributes['house_number'] = trim($value);
+    }
+
+    public function setStreetAttribute($value)
+    {
+        $this->attributes['street'] = trim($value);
+    }
+
+    public function setAreaAttribute($value)
+    {
+        $this->attributes['area'] = trim($value);
+    }
+
     public function getGenderNameAttribute()
     {
         return self::GENDERS[$this->attributes['gender']];
     }
+
+    public function getFullNameAttribute()
+    {
+        return ucfirst($this->attributes['first_name']) . ' ' . ucfirst($this->attributes['middle_name'])[0] . '. ' . ucfirst($this->attributes['last_name'])
+            . ' ' . ucfirst($this->attributes['suffix']);
+    }
+
+    public function getPrefixedLastNameAttribute()
+    {
+        return ($this->gender_name === self::GENDERS['m'] ? 'Mr.' : 'Ms.') . ' ' . $this->attributes['last_name'];
+    }
+
+    public function getPronounAttribute()
+    {
+        return ($this->gender_name === self::GENDERS['m'] ? 'He' : 'She');
+    }
+
+    public function getAdjectiveAttribute()
+    {
+        return ($this->gender_name === self::GENDERS['m'] ? 'his' : 'her');
+    }
+
+    public function getCompleteAddressAttribute()
+    {
+        return $this->attributes['house_number'] . ' ' . $this->attributes['street'] . ' ' . $this->attributes['area'] . ' ' . config('setting.barangay') . ', ' . config('setting.city');
+    }
+
 }

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\DocumentGenerated;
+use App\Listeners\ActivityLoggedDocumentGenerated;
 use App\Models\Resident;
 use App\Models\User;
 use App\Observers\ResidentObserver;
@@ -21,6 +23,9 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+        ],
+        DocumentGenerated::class => [
+            ActivityLoggedDocumentGenerated::class,
         ],
     ];
 

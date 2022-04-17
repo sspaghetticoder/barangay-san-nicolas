@@ -1,6 +1,6 @@
 @props(['method' => 'POST', 'action' => '#'])
 
-<form method="{{ $method }}" action="{{ $action }}">
+<form {!! $attributes->merge(['method' => $method, 'action' => $action]) !!}>
     @csrf
     @if (isset($subMethod))
         {{ $subMethod }}        

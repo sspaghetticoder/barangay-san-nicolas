@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ResidentController;
 use App\Http\Controllers\UserController;
 use App\Http\Livewire\Dashboard;
 use Illuminate\Support\Facades\Route;
-
+// use HeadlessChromium\BrowserFactory;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,14 +18,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('login');
-});
+Route::get('/', fn() => redirect()->route('login'));
+
+Route::get('/indigency/{params}', [DocumentController::class, 'indigency'])->name('indigency');
+Route::get('/residency/{params}', [DocumentController::class, 'residency'])->name('residency');
+Route::get('/clearance/{params}', [DocumentController::class, 'clearance'])->name('clearance');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    // Route::get('/dashboard', function () {
-    //     return view('dashboard');
-    // })->name('dashboard');
+    Route::post('/pdf', [PdfController::class, 'printPdf'])->name('pdf.print');
+
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
 
     Route::put('/users/{id}/undo', [UserController::class, 'undo'])->name('users.undo');
