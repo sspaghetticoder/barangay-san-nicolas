@@ -23,7 +23,7 @@ trait ActivityLogTableColumns
                 ->secondaryHeader(function () {
                     return view('tables.cells.input-search', ['field' => 'id', 'columnSearch' => $this->columnSearch]);
                 }),
-            Column::make("Description", "description")
+            Column::make("Action", "description")
                 ->searchable()
                 ->html()
                 ->secondaryHeader(function () {
@@ -35,7 +35,8 @@ trait ActivityLogTableColumns
                         if (empty($row->causer)) {
                             return '<span class="text-red-500">Unable to display</span>';
                         } else {
-                            return $row->causer->trashed() ? "<span class='line-through cursor-not-allowed text-gray-400'>".$row->causer->name."</span>" : $row->causer->name;
+                            return $row->causer->trashed() ? "<span class='line-through cursor-not-allowed text-gray-400'>".$row->causer->name."</span>"
+                            : "<a href='".$row->causer->location."' class='underline text-red-500'>".$row->causer->name."</a>";
                         }
                     }
                 )
@@ -45,7 +46,8 @@ trait ActivityLogTableColumns
                 ->html(),
             Column::make("Performed On")
                 ->label(
-                    fn ($row, Column $column) => $row->subject->trashed() ? "<span class='line-through cursor-not-allowed text-gray-400'>".$row->subject->name."</span>" : $row->subject->name
+                    fn ($row, Column $column) => $row->causer->trashed() ? "<span class='line-through cursor-not-allowed text-gray-400'>".$row->subject->name."</span>"
+                      : "<a href='".$row->subject->location."' class='underline text-indigo-500'>".$row->subject->name."</a>"
                 )
                 ->html()
                 ->secondaryHeader(function () {

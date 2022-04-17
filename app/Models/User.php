@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Location;
 use App\Models\Traits\Timestamps;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -18,10 +19,13 @@ class User extends Authenticatable
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
+    use Location;
     use Notifiable;
     use SoftDeletes;
     use TwoFactorAuthenticatable;
     use Timestamps;
+
+    protected $primaryKey = 'id';
 
     public const ACTIVE_STATUS = 'Yes';
     public const DEACTIVE_STATUS = 'No';
