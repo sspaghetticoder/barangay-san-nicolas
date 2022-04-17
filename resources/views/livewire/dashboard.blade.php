@@ -1,4 +1,4 @@
-<div>
+<div wire:poll.60000ms>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
@@ -10,6 +10,7 @@
             <div class="bg-white col-span-8 p-4">
                 <canvas id="residents"></canvas>
             </div>
+
             <div class="bg-white col-span-4 p-4">
                 <p class="text-xs text-center">Requested Documents</p>
                 <canvas id="documents"></canvas>
@@ -20,13 +21,15 @@
                     <div class="bg-white flex items-center justify-between col-span-2 p-4">
                         <div class="flex items-center">
                             <div class="bg-indigo-100 text-indigo-700 w-fit p-4 rounded-2xl">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users"
+                                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                     <circle cx="9" cy="7" r="4"></circle>
                                     <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
                                     <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                                     <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
-                                 </svg>
+                                </svg>
                             </div>
 
                             <div class="mx-2">
@@ -35,18 +38,20 @@
                         </div>
 
                         <div>
-                            <p class="text-black font-bold text-2xl">10, 231</p>
+                            <p class="text-black font-bold text-2xl">{{ $residents }}</p>
                         </div>
                     </div>
                     <div class="bg-white flex items-center justify-between col-span-2 p-4">
                         <div class="flex items-center">
                             <div class="bg-indigo-100 text-indigo-700 w-fit p-4 rounded-2xl">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-check"
+                                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                     <circle cx="9" cy="7" r="4"></circle>
                                     <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
                                     <path d="M16 11l2 2l4 -4"></path>
-                                 </svg>
+                                </svg>
                             </div>
 
                             <div class="mx-2">
@@ -55,7 +60,7 @@
                         </div>
 
                         <div>
-                            <p class="text-black font-bold text-2xl">431</p>
+                            <p class="text-black font-bold text-2xl">{{ $users }}</p>
                         </div>
                     </div>
                 </div>
@@ -63,10 +68,12 @@
                     <div class="bg-white flex items-center justify-between col-span-2 p-4">
                         <div class="flex items-center">
                             <div class="bg-indigo-100 text-indigo-700 w-fit p-4 rounded-2xl">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-activity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-activity"
+                                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                     <path d="M3 12h4l3 8l4 -16l3 8h4"></path>
-                                 </svg>
+                                </svg>
                             </div>
 
                             <div class="mx-2">
@@ -75,17 +82,20 @@
                         </div>
 
                         <div>
-                            <p class="text-black font-bold text-2xl">431</p>
+                            <p class="text-black font-bold text-2xl">{{ $activities }}</p>
                         </div>
                     </div>
                     <div class="bg-white flex items-center justify-between col-span-2 p-4">
                         <div class="flex items-center">
                             <div class="bg-indigo-100 text-indigo-700 w-fit p-4 rounded-2xl">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file"
+                                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                     <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
-                                    <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
-                                 </svg>
+                                    <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z">
+                                    </path>
+                                </svg>
                             </div>
 
                             <div class="mx-2">
@@ -94,7 +104,7 @@
                         </div>
 
                         <div>
-                            <p class="text-black font-bold text-2xl">431</p>
+                            <p class="text-black font-bold text-2xl">{{ $documents }}</p>
                         </div>
                     </div>
                 </div>
@@ -113,10 +123,10 @@
             const activityLogBarChart = new Chart(activityLogs, {
                 type: 'bar',
                 data: {
-                    labels: ['M', 'T', 'W', 'TH', 'F', 'S', 'SU'],
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
                     datasets: [{
                         label: 'Activity Logs (This Week)',
-                        data: [12, 19, 3, 5, 2, 3, 4],
+                        data: @json($week),
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',
@@ -158,7 +168,7 @@
                     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
                     datasets: [{
                         label: 'Registered Residents (This Year)',
-                        data: [65, 59, 80, 81, 56, 55, 40, 12, 12, 23, 53, 12],
+                        data: @json($months),
                         fill: false,
                         borderColor: 'rgb(99, 102, 241)',
                         tension: 0.1
@@ -177,18 +187,22 @@
                 }
             });
 
+            let data = @json($requestedDocuments);
+            let documentChartKeys = [];
+            let documentChartValues = [];
+
+            for (key in data) {
+                documentChartKeys.push(key);
+                documentChartValues.push(data[key]);
+            }
+
             const documents = document.getElementById('documents');
             const documentDoughnutChart = new Chart(documents, {
                 type: 'doughnut',
                 data: {
-                    labels: [
-                        'Indigency',
-                        'Residency',
-                        'Clearance'
-                    ],
+                    labels: documentChartKeys,
                     datasets: [{
-                        label: 'Wew',
-                        data: [300, 50, 100],
+                        data: documentChartValues,
                         backgroundColor: [
                             'rgb(255, 99, 132)',
                             'rgb(54, 162, 235)',
