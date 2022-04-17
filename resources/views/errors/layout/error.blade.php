@@ -7,6 +7,7 @@
     <title>
         @yield('title')
     </title>
+    @include('layouts.favicons')
 
     <link rel="stylesheet" href="{{ asset('css/css@googlefonts.css') }}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">

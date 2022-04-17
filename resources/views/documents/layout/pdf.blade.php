@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
+    @include('layouts.favicons')
     <link rel="stylesheet" href="{{ asset('css/css@googlefonts.css') }}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
