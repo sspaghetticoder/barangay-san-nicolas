@@ -114,6 +114,23 @@
             </x-form::field>
 
             <x-form::divider>
+                <x-slot:title>Other</x-slot:title>
+                <x-slot:description>Database Information</x-slot:description>
+            </x-form::divider>
+
+            <x-form::field>
+                <x-slot:title>Created At</x-slot:title>
+
+                <x-jet-input class="block mt-1 cursor-not-allowed" style="width: 70%;" :disabled="true" type="text" :value="$resident->created_at" />
+            </x-form::field>
+
+            <x-form::field>
+                <x-slot:title>Last Modified</x-slot:title>
+
+                <x-jet-input class="block mt-1 cursor-not-allowed" style="width: 70%;" :disabled="true" type="text" :value="$resident->updated_at" />
+            </x-form::field>
+
+            <x-form::divider>
                 <x-slot:title>Request Document</x-slot:title>
                 <x-slot:description>Please provide all the necessary information.</x-slot:description>
             </x-form::divider>

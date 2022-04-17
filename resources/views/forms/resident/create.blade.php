@@ -30,6 +30,7 @@
 
                 <x-jet-input name="middle_name" class="block mt-1" style="width: 70%;" type="text" :value="old('middle_name')" autofocus autocomplete="middle_name"/>
                 <x-jet-input-error for="middle_name"/>
+                <x-jet-label>Please leave it blank if none.</x-jet-label>
             </x-form::field>
 
             <x-form::field>
@@ -37,6 +38,7 @@
 
                 <x-jet-input name="suffix" class="block mt-1" style="width: 70%;" type="text" :value="old('suffix')" autofocus autocomplete="suffix"/>
                 <x-jet-input-error for="suffix"/>
+                <x-jet-label>Please leave it blank if none.</x-jet-label>
             </x-form::field>
 
             <x-form::field :required="true">
@@ -109,6 +111,7 @@
 
                 <x-jet-input name="area" class="block mt-1" style="width: 70%;" type="text" :value="old('area')" autofocus/>
                 <x-jet-input-error for="area"/>
+                <x-jet-label>Please leave it blank if none.</x-jet-label>
             </x-form::field>
 
             <x-form::footer>

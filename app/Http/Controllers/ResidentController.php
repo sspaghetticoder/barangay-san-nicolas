@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreResidentRequest;
+use App\Http\Requests\UpdateResidentRequest;
 use App\Models\Resident;
 use Illuminate\Http\Request;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -107,7 +108,7 @@ class ResidentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateResidentRequest $request, $id)
     {
         Resident::find($id)->update($request->all());
         

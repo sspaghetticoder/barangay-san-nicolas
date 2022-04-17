@@ -12,6 +12,7 @@ trait ResidentTableColumns
         'last_name' => null,
         'first_name' => null,
         'middle_name' => null,
+        'suffix' => null,
     ];
 
     public function columns(): array
@@ -49,7 +50,14 @@ trait ResidentTableColumns
                 ->secondaryHeader(function () {
                     return view('tables.cells.input-search', ['field' => 'middle_name', 'columnSearch' => $this->columnSearch]);
                 }),
-            Column::make($this->model::updatedAtAlias(), "updated_at"),
+            Column::make("Suffix", "suffix")
+                ->sortable()
+                ->searchable()
+                ->html()
+                ->secondaryHeader(function () {
+                    return view('tables.cells.input-search', ['field' => 'suffix', 'columnSearch' => $this->columnSearch]);
+                }),
+            // Column::make($this->model::updatedAtAlias(), "updated_at"),
             Column::make("Action")
                 ->label(function ($row, Column $column) {
                     return view('tables.cells.action-buttons', $row->trashed() ? ['undoLink' => route('residents.undo', $row->full_id)] : [

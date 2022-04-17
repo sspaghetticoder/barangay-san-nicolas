@@ -31,6 +31,7 @@ class ResidentTable extends DataTableComponent
             ->when($this->columnSearch['full_id'] ?? null, fn ($query, $fullId) => $query->where('full_id', $fullId))
             ->when($this->columnSearch['last_name'] ?? null, fn ($query, $lastName) => $query->where('last_name', 'like', '%' . $lastName . '%'))
             ->when($this->columnSearch['first_name'] ?? null, fn ($query, $firstName) => $query->where('first_name', 'like', '%' . $firstName . '%'))
-            ->when($this->columnSearch['middle_name'] ?? null, fn ($query, $middleName) => $query->where('middle_name', 'like', '%' . $middleName . '%'));
+            ->when($this->columnSearch['middle_name'] ?? null, fn ($query, $middleName) => $query->where('middle_name', 'like', '%' . $middleName . '%'))
+            ->when($this->columnSearch['suffix'] ?? null, fn ($query, $suffix) => $query->where('suffix', 'like', '%' . $suffix . '%'));
     }
 }

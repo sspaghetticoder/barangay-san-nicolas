@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\DocumentGenerated;
 use App\Http\Controllers\Traits\Serialization;
+use App\Http\Requests\PrintDocumentRequest;
 use App\Models\Activity;
 use App\Models\Resident;
 use App\Services\ConvertToLocalTimezoneService;
@@ -20,7 +21,7 @@ class PdfController extends Controller
     public $document;
     public $page;
 
-    public function __construct(Request $request)
+    public function __construct(PrintDocumentRequest $request)
     {
         $now = (new ConvertToLocalTimezoneService)->convert(Carbon::parse(now()));
 

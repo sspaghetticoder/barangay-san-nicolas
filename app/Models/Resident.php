@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Traits\Timestamps;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -69,15 +70,31 @@ class Resident extends Model
         $this->attributes['first_name'] = trim($value);
     }
 
-    public function setMiddleNameAttribute($value)
+    // public function setMiddleNameAttribute($value)
+    // {
+    //     $this->attributes['middle_name'] = trim($value);
+    // }
+
+    protected function middleName(): Attribute
     {
-        $this->attributes['middle_name'] = trim($value);
+        return Attribute::make(
+            get: fn ($value) => empty($value) ? 'N/A' : $value,
+            set: fn ($value) => trim($value),
+        );
     }
 
-    public function setSuffixAttribute($value)
+    protected function suffix(): Attribute
     {
-        $this->attributes['suffix'] = trim($value);
+        return Attribute::make(
+            get: fn ($value) => empty($value) ? 'N/A' : $value,
+            set: fn ($value) => trim($value),
+        );
     }
+
+    // public function setSuffixAttribute($value)
+    // {
+    //     $this->attributes['suffix'] = ;
+    // }
 
     public function setEmailAttribute($value)
     {

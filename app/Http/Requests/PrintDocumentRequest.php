@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class UpdateUserRequest extends FormRequest
+class PrintDocumentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +24,10 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users', 'email', auth()->id())],
-            'active' => ['required', 'boolean']
+            'route' => ['required'],
+            'full_id' => ['required'],
+            'purpose' => ['required', 'string', 'max:255'],
+            'specified' => ['required_if:purpose,Others', 'string', 'max:255'],
         ];
     }
 }

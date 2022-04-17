@@ -15,7 +15,6 @@ class Dashboard extends Component
 
     public function render()
     {
-        // dd($this->getRequestedDocumentsTotalAll());
         return view('livewire.dashboard', [
             'months' => $this->getResidentsTotalPerMonth(),
             'week' => $this->getActivitiesTotalPerWeek(),

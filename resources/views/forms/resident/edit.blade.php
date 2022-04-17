@@ -18,7 +18,7 @@
             <x-form::field>
                 <x-slot:title>Resident ID</x-slot:title>
 
-                <x-jet-input class="block mt-1 cursor-not-allowed" style="width: 70%;" :disabled="true" type="text" value="{{ $resident->full_id }}"/>
+                <x-jet-input name="full_id" class="block mt-1 cursor-not-allowed" style="width: 70%;" readonly type="text" value="{{ $resident->full_id }}"/>
             </x-form::field>
 
             <x-form::field :required="true">
